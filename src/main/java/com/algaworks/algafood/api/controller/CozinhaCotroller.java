@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.algaworks.algafood.domain.model.Cozinha;
-import com.algaworks.algafood.domain.repository.CozinhaRepository;
+import com.algaworks.algafood.domain.service.CozinhaService;
 
 
 @RestController
@@ -18,16 +18,16 @@ import com.algaworks.algafood.domain.repository.CozinhaRepository;
 public class CozinhaCotroller {
 
 	@Autowired
-	private CozinhaRepository cozinhaRepository;
+	private CozinhaService cozinhaService;
 
 	@GetMapping
 	public List<Cozinha> listar() {
-		return cozinhaRepository.findAll();
+		return cozinhaService.listar();
 	}
 	
 	@GetMapping("/{cozinhaId}")
-	public Optional<Cozinha> listar (@PathVariable("cozinhaId") Long id){
-		return cozinhaRepository.findById(id);
+	public Optional<Cozinha> listarPorId(@PathVariable Long cozinhaId){
+		return cozinhaService.findById(cozinhaId);
 	}
 
 }
