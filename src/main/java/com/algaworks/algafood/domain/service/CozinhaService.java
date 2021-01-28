@@ -19,7 +19,7 @@ public class CozinhaService {
 		return cozinhaRepository.findAll();
 	}
 
-	public Optional<Cozinha> findById(Long cozinhaId) {
+	public Optional<Cozinha> listarPorId(Long cozinhaId) {
 		return cozinhaRepository.findById(cozinhaId);
 	}
 

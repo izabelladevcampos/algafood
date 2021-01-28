@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.algaworks.algafood.domain.model.Cozinha;
 import com.algaworks.algafood.domain.service.CozinhaService;
 
-
 @RestController
 @RequestMapping(value = "/cozinhas")
 public class CozinhaCotroller {
@@ -24,10 +23,10 @@ public class CozinhaCotroller {
 	public List<Cozinha> listar() {
 		return cozinhaService.listar();
 	}
-	
+
 	@GetMapping("/{cozinhaId}")
-	public Optional<Cozinha> listarPorId(@PathVariable Long cozinhaId){
-		return cozinhaService.findById(cozinhaId);
+	public Optional<Cozinha> listarPorId(@PathVariable Long cozinhaId) {
+		return cozinhaService.listarPorId(cozinhaId);
 	}
 
 }
