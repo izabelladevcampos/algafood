@@ -1,9 +1,9 @@
 package com.algaworks.algafood.api.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,19 +14,22 @@ import com.algaworks.algafood.domain.service.CozinhaService;
 
 @RestController
 @RequestMapping(value = "/cozinhas")
-public class CozinhaCotroller {
+public class CozinhaController {
 
 	@Autowired
 	private CozinhaService cozinhaService;
 
 	@GetMapping
-	public List<Cozinha> listar() {
-		return cozinhaService.listar();
-	}
+	public ResponseEntity<List<Cozinha>> listar() {
+		List<Cozinha> list = cozinhaService.listar();
+		return ResponseEntity.ok().body(list);
 
-	@GetMapping("/{cozinhaId}")
-	public Optional<Cozinha> listarPorId(@PathVariable Long cozinhaId) {
-		return cozinhaService.listarPorId(cozinhaId);
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<Cozinha> buscar(@PathVariable Long id){
+		Cozinha cozinha = cozinhaService.buscar(id);
+		return ResponseEntity.ok().body(cozinha);
 	}
 
 }
