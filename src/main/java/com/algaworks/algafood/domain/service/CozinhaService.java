@@ -20,7 +20,15 @@ public class CozinhaService {
 	}
 
 	public Cozinha buscar(Long id) {
-		return cozinhaRepository.findById(id).get();
+		return cozinhaRepository.findById(id).orElse(null); /// NÃO É A MELHOR FORMA "TEMPORÁRIO"
 
+	}
+
+	public Cozinha salvar(Cozinha cozinha) {
+		return cozinhaRepository.save(cozinha);
+	}
+
+	public void deletar(Cozinha cozinha) {
+		cozinhaRepository.delete(cozinha);
 	}
 }
