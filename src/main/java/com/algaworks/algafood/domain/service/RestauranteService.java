@@ -23,5 +23,10 @@ public class RestauranteService {
 		return restauranteRepository.findById(id).orElse(null); /// NÃO É A MELHOR FORMA "TEMPORÁRIO"
 
 	}
+	
+	public Restaurante salvar(Restaurante restaurante) {
+		return restauranteRepository.save(restaurante);
+	}
+
 
 }
